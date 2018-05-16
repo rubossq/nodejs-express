@@ -1,0 +1,21 @@
+<div class="modalwindow" id='modalWindow'>
+    <div class="modalqestion"><p class="delete" id="modal-message"></p></div>
+    <div class="modalbuttons">
+        <form method="post">
+            <div onclick='canceModal()' class="btn-danger btn btn-lg modalbtn">No</div>
+            <button type='submit' class=" btn btn-success btn-lg">Yes</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    function showModal(messageHtml, action) {
+        $("#modal-message").html(messageHtml);
+        document.getElementById('modalWindow').style.display = "block";
+        document.querySelector('#modalWindow form').setAttribute("action", action);
+    }
+
+    function canceModal() {
+        document.getElementById('modalWindow').style.display = "none";
+    }
+</script>

@@ -1,0 +1,12 @@
+{
+	"development": {
+		"PORT": "5100",
+		"DB_LOGIN": "test",
+		"RENEW_TOKEN_URL" : "http://localhost:8000/api/v1/tokens/renew",
+		"ESTORM_LOGIN_URL": "http://localhost:8000/login/",
+		"ESTORM_TOKEN_CHECK_URL": "http://localhost:8000/api/v1/tokens/redirect/"
+	},
+	"production":{
+
+	}
+}

@@ -1,0 +1,26 @@
+{{> header }}
+<div id="cardedit">
+    <form role="form" action="{{routePath}}/edit" method="post">
+        <div class="flex-container">
+            <div class="textedit-center">
+                <table>
+                    <tr class="textdescription">
+                        <td class="textleft paddingplus20"><label for="store_dev_id">Store Dev ID</label></td>
+                        <td class="textleft"><span class="inputdescription"><input id="store_dev_id" type="text"
+                                                                                   placeholder="Store dev ID"
+                                                                                   name="deventity[store_dev_id]"
+                                                                                   required minlength="3" value=""
+                                                                                   autocomplete="off"></span></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="flex-container actions-button-1">
+            <button type="button" onclick="window.location.href='{{cancelLink}}';"
+                    class="btn btn-lg btn-edit btn-danger">Cancel
+            </button>
+            <button type="submit" class="btn btn-lg btn-edit btn-success">Save</button>
+        </div>
+    </form>
+</div>
+{{> footer}}

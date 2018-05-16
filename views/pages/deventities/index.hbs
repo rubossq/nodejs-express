@@ -1,0 +1,28 @@
+{{> header}}
+<div class="flex-container content-block">
+
+    {{#if deventities}}
+        <table>
+            <tr>
+                <th class="description">STORE DEV ID</th>
+                <th></th>
+            </tr>
+            <tr class="block-link"></tr>
+
+            {{#each deventioties}}
+                <tr class="compaings-content trlink">
+                    <td>{{store_dev_id}}</td>
+                    <td>
+                        {{#if ../baseUser.permissionsObject.read}}
+                            <a onclick="showModal('Confirm deleting dev entity: <b>{{id}}</b>', '/deventities/delete/{{id}}'); event.stopPropagation()"
+                               class="redcrossx-div"><img src="/images/crossx.png"></a>
+                        {{/if}}
+                    </td>
+                </tr>
+                <tr class="block-link2"></tr>
+            {{/each}}
+
+        </table>
+    {{/if}}
+
+</div>

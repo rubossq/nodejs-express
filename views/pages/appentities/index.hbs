@@ -1,0 +1,30 @@
+{{> header}}
+<div class="flex-container content-block">
+
+    {{#if appentities}}
+        <table>
+            <tr>
+                <th class="description">PACKAGE ID</th>
+                <th class="description">TYPE</th>
+                <th></th>
+            </tr>
+            <tr class="block-link"></tr>
+
+            {{#each appentities}}
+                <tr class="compaings-content trlink">
+                    <td>{{package_id}}</td>
+                    <td>{{type}}</td>
+                    <td>
+                        {{#if ../baseUser.permissionsObject.read}}
+                            <a onclick="showModal('Confirm deleting app entity: <b>{{package_id}}</b>', '/appentities/delete/{{id}}'); event.stopPropagation()"
+                               class="redcrossx-div"><img src="images/crossx.png"></a>
+                        {{/if}}
+                    </td>
+                </tr>
+                <tr class="block-link2"></tr>
+            {{/each}}
+
+        </table>
+    {{/if}}
+
+</div>

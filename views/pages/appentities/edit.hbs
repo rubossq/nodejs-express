@@ -1,0 +1,37 @@
+{{> header }}
+<div id="cardedit">
+    <form role="form" action="{{routePath}}/edit" method="post">
+        <div class="flex-container">
+            <div class="textedit-center">
+                <table>
+                    <tr class="textdescription">
+                        <td class="textleft paddingplus20"><label for="type">Type</label></td>
+                        <td class="textleft textleft-padding">
+                            <select id="type" class="addsample" name="appentity[type]" required>
+                                {{#each types}}
+                                    <option value="{{this}}">{{this}}</option>
+                                {{/each}}
+                            </select>
+                        </td>
+                    </tr>
+                    <tr class="block-link3"></tr>
+                    <tr class="textdescription">
+                        <td class="textleft paddingplus20"><label for="package_id">Package ID</label></td>
+                        <td class="textleft"><span class="inputdescription"><input id="package_id" type="text"
+                                                                                   placeholder="Package ID"
+                                                                                   name="appentity[package_id]"
+                                                                                   required minlength="3" value=""
+                                                                                   autocomplete="off"></span></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="flex-container actions-button-1">
+            <button type="button" onclick="window.location.href='{{cancelLink}}';"
+                    class="btn btn-lg btn-edit btn-danger">Cancel
+            </button>
+            <button type="submit" class="btn btn-lg btn-edit btn-success">Save</button>
+        </div>
+    </form>
+</div>
+{{> footer}}

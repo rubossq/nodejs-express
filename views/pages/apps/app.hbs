@@ -1,0 +1,397 @@
+{{> header }}
+<div class="flex-container content-block">
+    <div class="flex-container content-left">
+        <div class="flarium-logo block-link">
+            <a href="https://play.google.com/store/apps/details?id={{app.package_id}}" target="_blank">
+                <!--app.icon-->
+                <div id="flarium-mark"><img src="{{app.icon}}"></div>
+            </a>
+            <div class="flex-container content-left marginplus30">
+                <div class="overview1"><span>{{app.name}}</span></div>
+                <!--<div class="overview2"><span>Util Flow</span></div>-->
+                <div class="imagetext"><span>By <a
+                        href="/devs/{{app.system_developer_id}}">{{app.developer_id}}</a></span></div>
+                <div class="flarium"><a href="https://play.google.com/store/apps/details?id={{app.package_id}}"
+                                        target="_blank"><span>Avialable on play market</span></a></div>
+            </div>
+        </div>
+    </div>
+    <div class="flex-container block-link"></div>
+    <div class="flex-container block-link">
+        <div class="flex-container content-bigrow-left">
+            <div class="flex-container description-big content-bigrow-25">
+                <div class="flex-container">
+                    <span class="overview">{{app.updates}}</span>
+                </div>
+                <div class="flex-container">
+                    <p>Last updated</p>
+                </div>
+            </div>
+            <div class="flex-container description-big content-bigrow-25">
+                <div class="flex-container">
+                    <span class="overview">{{app.downloads}}</span>
+                </div>
+                <div class="flex-container">
+                    <p>Installs</p>
+                </div>
+            </div>
+            <div class="flex-container description-big content-bigrow-25">
+                <div class="flex-container">
+                    <span class="overview">{{app.rating.av}}</span>
+                </div>
+                <div class="flex-container">
+                    <p>Rating</p>
+                </div>
+            </div>
+            <div class="flex-container description-big content-bigrow-25">
+                <div class="flex-container">
+                    <span class="overview">{{app.rating.count}}</span>
+                </div>
+                <div class="flex-container">
+                    <p>Rating count</p>
+                </div>
+            </div>
+        </div>
+        <div class="flex-container content-bigrow-right">
+            <div class="flex-container description-big content-bigrow-25">
+                <div class="flex-container">
+                    <span class="overview">{{app.size}}</span>
+                </div>
+                <div class="flex-container">
+                    <p>App size</p>
+                </div>
+            </div>
+            <div class="flex-container description-big content-bigrow-25">
+                <div class="flex-container">
+                    <span class="overview">{{app.price}}</span>
+                </div>
+                <div class="flex-container">
+                    <p>Price</p>
+                </div>
+            </div>
+            <div class="flex-container description-big content-bigrow-25">
+                <div class="flex-container">
+                    <span class="overview">{{app.version}}</span>
+                </div>
+                <div class="flex-container">
+                    <p>App version</p>
+                </div>
+            </div>
+            <div class="flex-container description-big content-bigrow-25">
+                <div class="flex-container">
+                    <span class="overview">{{app.os_version}}</span>
+                </div>
+                <div class="flex-container">
+                    <p>Required android</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="logo logo-service">
+        <div class="gtco-logo">Description</div>
+    </div>
+    <div class="flex-container block-link"></div>
+    <div class="back">
+        <blockquote class="blockquote-content">
+            {{{app.desc}}}
+        </blockquote>
+    </div>
+    <div class="flex-container block-link"></div>
+    <div class="logo logo-service">
+        <div class="gtco-logo">Screens</div>
+    </div>
+    <div class="flex-container block-link"></div>
+    <div class="flex-container block-link version-container">
+        <!--app.images
+        <div class="flex-container big-screen"><img src=""></div>
+        -->
+
+        {{#each app.images}}
+            <div class="flex-container small-screen"><img src="{{this}}"></div>
+        {{/each}}
+
+    </div>
+    <!--<div class="flex-container block-link">
+        <div class="logo logo-service">
+            <div class="gtco-logo"><a class="comments" data-toggle="collapse" href="#collapseExample"
+                                      aria-expanded="false" aria-controls="collapseExample">
+                Comments ({{app.comments}}) <img src="images/arrow_down.png"> </a>
+            </div>
+        </div>
+    </div>
+    <div class="collapse" id="collapseExample">
+        <div>
+            <span class="cloud">Tag cloud</span>
+            <div class="flex-container block-link back flex-blocks1 cloud1">
+                <span class="font30">accounts</span><span class="font18">best</span> <span
+                    class="font24"> easy</span>
+                <span class="font14">features</span> <span class="font24">free</span><span
+                    class="font36">grow </span>
+                <span class="font36">tool</span> <span class="font24">manage</span><span
+                    class="font14">use </span>
+                <span class="font36">utility</span><span class="font24">your</span>
+            </div>
+
+            <span class="cloud">Positive comment tag cloud</span>
+            <div class="flex-container block-link back flex-blocks1 cloud1">
+                <span class="font30">accounts</span><span class="font18">best</span> <span
+                    class="font24"> easy</span>
+                <span class="font14">features</span> <span class="font24">free</span><span
+                    class="font36">grow </span>
+                <span class="font36">tool</span> <span class="font24">manage</span><span
+                    class="font14">use </span>
+                <span class="font36">utility</span><span class="font24">your</span>
+            </div>
+            <span class="cloud">Neagtive comment tag cloud</span>
+            <div class="flex-container block-link back flex-blocks1 cloud1">
+                <span class="font30">accounts</span><span class="font18">best</span> <span
+                    class="font24"> easy</span>
+                <span class="font14">features</span> <span class="font24">free</span><span
+                    class="font36">grow </span>
+                <span class="font36">tool</span> <span class="font24">manage</span><span
+                    class="font14">use </span>
+                <span class="font36">utility</span><span class="font24">your</span>
+            </div>
+        </div>
+    </div>-->
+    <div class="flex-container block-link"></div>
+    <div class="flex-container block-link version-container">
+        {{#each updates}}
+            <div class="flex-container content-bigrow-25">
+                <div class="block-link">
+                    <div class="flex-container content-left marginplus30">
+                        <div class="imagetext paddtop15 nomargin">Version {{this.version}}</div>
+                        <div class="comment-content">{{this.date}}</div>
+                        <div class="installs"><a href="javascript:void(0);">Updates</a></div>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+    <div class="flex-container block-link">
+        <div class="flex-container content-row-left-end">
+            <div class="gtco-logo">Google play Rating</div>
+            <div class="addsample-action addsample-but-small" onclick="setFastButtons(1, 'rating')">1d</div>
+            <div class="addsample-action addsample-but-small" onclick="setFastButtons(3, 'rating')">3d</div>
+            <div class="addsample-action addsample-but-small" onclick="setFastButtons(7, 'rating')">7d</div>
+            <div class="addsample-action addsample-but-small" onclick="setFastButtons(30, 'rating')">30d</div>
+        </div>
+        <div class="flex-container content-row-right">
+            <form class="flex-container content-both" action="{{routePath}}" method="get">
+                <div class="dateinput flex-blocks1 flex-container addsample-action">
+                    <label for="ratingStart">From: </label>
+                    <input type="date" value="{{ratingDate.start}}" name="rating[start]" class="tcal tcalInput"
+                           id="ratingStart">
+                </div>
+                <div class="dateinput flex-blocks1 flex-container addsample-action">
+                    <label for="ratingEnd">To: </label>
+                    <input type="date" value="{{ratingDate.end}}" name="rating[end]" class="tcal tcalInput"
+                           id="ratingEnd">
+                </div>
+                <input type="submit" class="addsample-action addsample-but" value="Calc">
+            </form>
+        </div>
+    </div>
+    <div class="flex-container block-link"></div>
+</div>
+<div class="histogramm-container" id="rating_chart"></div>
+
+<div class="flex-container content-block">
+    <div class="flex-container block-link"></div>
+    {{#if currentRankingInfo}}
+        <div class="logo-service">
+            <div class="gtco-logo">Top rankings</div>
+        </div>
+        <div class="flex-container block-link"></div>
+
+        <div class="flex-container block-link">
+            <table>
+                <tr>
+                    <th class="description">RANK</th>
+                    <th class="description">COUNTRY</th>
+                    <th class="description">CATEGORY</th>
+                    <th class="description">LIST</th>
+                </tr>
+                <tr class="block-link"></tr>
+                {{#each currentRankingInfo}}
+                    <tr onClick="window.location.href='url';" class="trlink compaings-content">
+                        <td>{{this.rank}}</td>
+                        <td>{{this.country_id}}</td>
+                        <td>Games</td>
+                        <td>Top New Free</td>
+                    </tr>
+                    <tr class="block-link2"></tr>
+                {{/each}}
+            </table>
+        </div>
+        <div class="flex-container block-link"></div>
+    {{/if}}
+    <div class="flex-container block-link">
+        <div class="flex-container content-row-left-end">
+            <div class="gtco-logo">Ranking history</div>
+            <div class="addsample-action addsample-but-small" onclick="setFastButtons(1, 'ranking')">1d</div>
+            <div class="addsample-action addsample-but-small" onclick="setFastButtons(3, 'ranking')">3d</div>
+            <div class="addsample-action addsample-but-small" onclick="setFastButtons(7, 'ranking')">7d</div>
+            <div class="addsample-action addsample-but-small" onclick="setFastButtons(30, 'ranking')">30d</div>
+        </div>
+        <div class="flex-container content-row-right">
+            <form class="flex-container content-both" action="{{routePath}}" method="get">
+                <div class="dateinput flex-blocks1 flex-container addsample-action">
+                    <label for="rankingStart">From: </label>
+                    <input type="date" value="{{rankingDate.start}}" name="ranking[start]" class="tcal tcalInput"
+                           id="rankingStart">
+                </div>
+                <div class="dateinput flex-blocks1 flex-container addsample-action">
+                    <label for="rankingEnd">To: </label>
+                    <input type="date" value="{{rankingDate.end}}" name="ranking[end]" class="tcal tcalInput"
+                           id="rankingEnd">
+                </div>
+                <input type="submit" class="addsample-action addsample-but" value="Calc">
+            </form>
+        </div>
+    </div>
+</div>
+<div class="histogramm-container">
+    <div class="histogramm-container-left">
+        <div class="histogramm-container-list"></div>
+    </div>
+    <div class="histogramm-container-right">
+        <div class="histogramm-container-block" id="ranking_chart"></div>
+    </div>
+</div>
+<div class="flex-container content-block">
+    <div class="flex-container block-link"></div>
+    <div class="flex-container block-link">
+        <div class="flex-container content-row-left-end">
+            <div class="gtco-logo">Downloads</div>
+            <div class="addsample-action addsample-but-small" onclick="setFastButtons(1, 'downloads')">1d</div>
+            <div class="addsample-action addsample-but-small" onclick="setFastButtons(3, 'downloads')">3d</div>
+            <div class="addsample-action addsample-but-small" onclick="setFastButtons(7, 'downloads')">7d</div>
+            <div class="addsample-action addsample-but-small" onclick="setFastButtons(30, 'downloads')">30d</div>
+        </div>
+        <div class="flex-container content-row-right">
+            <form class="flex-container content-both" action="{{routePath}}" method="get">
+                <div class="dateinput flex-blocks1 flex-container addsample-action">
+                    <label for="downloadsStart">From: </label>
+                    <input type="date" value="{{downloadsDate.start}}" name="downloads[start]" class="tcal tcalInput"
+                           id="downloadsStart">
+                </div>
+                <div class="dateinput flex-blocks1 flex-container addsample-action">
+                    <label for="downloadsEnd">To: </label>
+                    <input type="date" value="{{downloadsDate.end}}" name="downloads[end]" class="tcal tcalInput"
+                           id="downloadsEnd">
+                </div>
+                <input type="submit" class="addsample-action addsample-but" value="Calc">
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="histogramm-container" id="downloads_chart"></div>
+
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script type="text/javascript">
+    google.charts.load('current', {'packages': ['corechart']});
+    google.charts.setOnLoadCallback(drawCharts);
+
+    function drawCharts() {
+        drawRatingChart();
+        setRankingChart();
+        drawDownloadsChart();
+    }
+
+    function drawRatingChart() {
+        let appRatingData = false;
+        {{#if appRatingData}}
+            appRatingData = {{{appRatingData}}};
+        {{/if}}
+
+        if (appRatingData) {
+            let data = google.visualization.arrayToDataTable(appRatingData);
+
+            let options = {
+                title: 'App Rating',
+                legend: {position: 'bottom'},
+                colors: ['#106AE5'],
+                vAxis: {
+                    gridlines: {count: -1}
+                },
+                hAxis: {gridlines: {count: 20}}
+            };
+
+            let chart = new google.visualization.AreaChart(document.getElementById('rating_chart'));
+
+            chart.draw(data, options);
+        }
+    }
+
+    function setRankingChart() {
+        let ranking = false;
+        {{#if ranking}}
+            ranking = [{{{ranking}}}];
+        {{/if}}
+
+        if (ranking) {
+            for (let i = 0; i < ranking.length; i++) {
+                let name = ranking[i][0][1];
+                let elem = $("<div class='histogramm-container-but'><img src='images/countries/" + name + ".png'>" + name + "</div>");
+                elem.click(function () {
+                    drawRankingChart(name, ranking[i]);
+                });
+
+                $(".histogramm-container-list").append(elem);
+            }
+
+            drawRankingChart(ranking[0][0][1], ranking[0]);
+        }
+    }
+
+    function drawRankingChart(name, ranking) {
+        let data = google.visualization.arrayToDataTable(ranking);
+
+        let options = {
+            title: name,
+            legend: {position: 'bottom'},
+            colors: ['#E51056'],
+            vAxis: {
+                gridlines: {count: -1},
+                direction: -1
+            },
+            hAxis: {gridlines: {count: 20}}
+        };
+
+        let chart = new google.visualization.LineChart(document.getElementById('ranking_chart'));
+
+        chart.draw(data, options);
+    }
+
+    function drawDownloadsChart() {
+        let appDownloadsData = false;
+        {{#if appDownloadsData}}
+            appDownloadsData = {{{appDownloadsData}}};
+        {{/if}}
+
+        if (appDownloadsData) {
+            let data = google.visualization.arrayToDataTable(appDownloadsData);
+
+            let options = {
+                title: 'Dev Downloads',
+                legend: {position: 'bottom'},
+                colors: ['#eea236'],
+                vAxis: {
+                    gridlines: {count: -1}
+                },
+                hAxis: {gridlines: {count: 20}}
+            };
+
+            let chart = new google.visualization.AreaChart(document.getElementById('downloads_chart'));
+
+            chart.draw(data, options);
+        }
+    }
+</script>
+
+
+<script src="/js/scripts/app.js"></script>

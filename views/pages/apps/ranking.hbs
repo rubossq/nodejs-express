@@ -1,0 +1,47 @@
+{{> header}}
+
+<div class="flex-container content-block">
+    <div class="flex-container block-link">
+        <form class="flex-container" action="{{routePath}}" method="get">
+            <div class="flex-container content-row-left-end">
+                <select class="addsample-action" name="country_id">
+                    <option value="{{country_id}}">{{country_id}}</option>
+
+                    {{#each countries}}
+                        <option value="{{this}}">{{this}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <div class="flex-container content-row-right">
+                <input type="submit" class="addsample-action addsample-but" value="Confirm">
+            </div>
+        </form>
+    </div>
+    <div class="flex-container block-link"></div>
+    <div class="flex-container block-link">
+        <table>
+            <tr>
+                <th class="description">Rank</th>
+                <th class="description"></th>
+                <th class="description">NAME</th>
+                <th class="description">DOWNLOADS</th>
+                <th class="description">RATING</th>
+                <!--<th class="description">RECENT</th>-->
+                <th class="description">LAST UPDATE</th>
+            </tr>
+            <tr class="block-link"></tr>
+            {{#each apps}}
+                <tr onClick="window.open('apps/{{this.id}}', '_blank');" class="trlink compaings-content">
+                    <td>{{@index}}</td>
+                    <td class="compa"><img src="{{this.icon}}" alt="cross"></td>
+                    <td>{{this.name}}</td>
+                    <td>{{this.downloads}}</td>
+                    <td>{{this.rating.av}}</td>
+                    <td>{{this.updates}}</td>
+                </tr>
+                <tr class="block-link2"></tr>
+            {{/each}}
+        </table>
+    </div>
+    <div class="flex-container block-link"></div>
+</div>

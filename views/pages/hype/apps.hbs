@@ -1,0 +1,46 @@
+{{> header}}
+
+<div class="flex-container content-block">
+    <div class="flex-container paddtop8">
+        <form class="flex-container content-both" action="{{routePath}}" method="get">
+            <button type="submit" name="period" class="addsample-action addsample-but-small" value="0d">Today</button>
+            <button type="submit" name="period" class="addsample-action addsample-but-small" value="1d">1d</button>
+            <button type="submit" name="period" class="addsample-action addsample-but-small" value="2d">2d</button>
+            <button type="submit" name="period" class="addsample-action addsample-but-small" value="5d">5d</button>
+            <button type="submit" name="period" class="addsample-action addsample-but-small" value="10d">10d</button>
+        </form>
+    </div>
+</div>
+
+{{#if apps}}
+<div class="flex-container content-block">
+    <div class="flex-container block-link">
+        <table>
+            <tr>
+                <th class="description">№</th>
+                <th class="description"></th>
+                <th class="description">HYPE</th>
+                <th class="description">NAME</th>
+                <th class="description">DOWNLOADS</th>
+                <th class="description">RATING</th>
+                <!--<th class="description">RECENT</th>-->
+                <th class="description">LAST UPDATE</th>
+            </tr>
+            <tr class="block-link"></tr>
+            {{#each apps}}
+                <tr onClick="window.open('apps/{{this.id}}', '_blank');" class="trlink compaings-content">
+                    <td>{{@index}}</td>
+                    <td class="compa"><img src="{{this.icon}}" alt="cross"></td>
+                    <td>{{this.hype}}</td>
+                    <td>{{this.name}}</td>
+                    <td>{{this.downloads}}</td>
+                    <td>{{this.rating.av}}</td>
+                    <td>{{this.updates}}</td>
+                </tr>
+                <tr class="block-link2"></tr>
+            {{/each}}
+        </table>
+    </div>
+    <div class="flex-container block-link"></div>
+</div>
+{{/if}}

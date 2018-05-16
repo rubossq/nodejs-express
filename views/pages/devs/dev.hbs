@@ -1,0 +1,229 @@
+{{> header }}
+<div class="flex-container content-block">
+    <div class="flex-container block-link">
+        <div class="logo logo-service">
+            <div class="gtco-logo"><a href="index.html">Overview</a></div>
+        </div>
+    </div>
+    <div class="flex-container block-link">
+        <div class="flex-container content-bigrow-left">
+            <!--<div class="flex-container description-big content-bigrow-25">
+                <div class="flex-container">
+                    <span class="overview">6 weeks</span>
+                </div>
+                <div class="flex-container">
+                    <p>Active since</p>
+                </div>
+            </div>-->
+            <div class="flex-container description-big content-bigrow-25">
+                <div class="flex-container">
+                    <span class="overview">{{dev.additional.apps}}</span>
+                </div>
+                <div class="flex-container">
+                    <p>App count</p>
+                </div>
+            </div>
+            <div class="flex-container description-big content-bigrow-25">
+                <div class="flex-container">
+                    <span class="overview">{{dev.additional.downloads}}</span>
+                </div>
+                <div class="flex-container">
+                    <p>Installs</p>
+                </div>
+            </div>
+            <div class="flex-container description-big content-bigrow-25">
+                <div class="flex-container">
+                    <span class="overview">{{dev.additional.rating}}</span>
+                </div>
+                <div class="flex-container">
+                    <p>Avarage rating</p>
+                </div>
+            </div>
+        </div>
+        <div class="flex-container content-bigrow-right">
+        </div>
+    </div>
+    <div class="flex-container block-link">
+        <div class="logo logo-service">
+            <div class="gtco-logo"><a href="index.html">Address</a></div>
+        </div>
+    </div>
+    <div class="flex-container content-bigrow-left">
+        <div class="address">
+            {{#if dev.address}}
+            <div class="compaings-content">{{dev.address}}</div>
+            {{/if}}
+            {{#if dev.website}}
+            <div class="website">Website</div>
+            <div class="marmin5 flarium"><a href="{{dev.website}}">{{dev.website}}</a></div>
+            {{/if}}
+            {{#if dev.email}}
+            <div class="website">Email</div>
+            <div class="marmin5 flarium"><a href="mailto:{{dev.email}}">{{dev.email}}</a></div>
+            {{/if}}
+        </div>
+    </div>
+    <div class="flex-container block-link">
+        <div class="logo logo-service">
+            <div class="gtco-logo"><a href="index.html">Apps</a></div>
+        </div>
+    </div>
+    <div class="flex-container block-link">
+        <table>
+            <tr>
+                <th class="description"></th>
+                <th class="description">NAME</th>
+                <th class="description">DOWNLOADS</th>
+                <th class="description">RATING</th>
+                <!--<th class="description">RECENT</th>-->
+                <th class="description">LAST UPDATE</th>
+            </tr>
+            <tr class="block-link"></tr>
+            {{#each apps}}
+                <tr onClick="window.location.href='/apps/{{this.id}}';" class="trlink compaings-content">
+                    <td class="compa"><img src="{{this.icon}}" alt="cross"></td>
+                    <td>{{this.name}}</td>
+                    <td>{{this.downloads}}</td>
+                    <td>{{this.rating.av}}</td>
+                    <td>{{this.updates}}</td>
+                </tr>
+                <tr class="block-link2"></tr>
+            {{/each}}
+        </table>
+    </div>
+    <div class="flex-container block-link"></div>
+    <div class="flex-container block-link">
+        <div class="flex-container content-row-left-end">
+            <div class="addsample-action addsample-but-small" onclick="setFastButtons(1)">1d</div>
+            <div class="addsample-action addsample-but-small" onclick="setFastButtons(3)">3d</div>
+            <div class="addsample-action addsample-but-small" onclick="setFastButtons(7)">7d</div>
+            <div class="addsample-action addsample-but-small" onclick="setFastButtons(30)">30d</div>
+        </div>
+        <div class="flex-container content-row-right paddtop8">
+            <form class="flex-container content-both" action="{{routePath}}" method="get">
+                <div class="dateinput flex-blocks1 flex-container addsample-action">
+                    <label for="start">From: </label>
+                    <input type="date" value="{{start}}" name="start" class="tcal tcalInput" id="start">
+                </div>
+                <div class="dateinput flex-blocks1 flex-container addsample-action">
+                    <label for="end">To: </label>
+                    <input type="date" value="{{end}}" name="end" class="tcal tcalInput" id="end">
+                </div>
+                <input type="submit" class="addsample-action addsample-but" value="Calc">
+            </form>
+        </div>
+    </div>
+    <div class="flex-container block-link"></div>
+</div>
+<div class="histogramm-container">
+    <div class="histogramm-container-left">
+        <div class="histogramm-container-but" onclick="switchCharts('releases_chart')">
+            <div style="background-color: #106AE5;"></div>
+            RELEASES
+        </div>
+        <div class="histogramm-container-but" onclick="switchCharts('updates_chart')">
+            <div style="background-color: #E51056;"></div>
+            UPDATES
+        </div>
+        <div class="histogramm-container-but" onclick="switchCharts('removes_chart')">
+            <div style="background-color: #eea236;"></div>
+            REMOVES
+        </div>
+    </div>
+    <div class="histogramm-container-right">
+        <div class="histogramm-container-block" id="releases_chart" style="z-index: 2"></div>
+        <div class="histogramm-container-block" id="updates_chart"></div>
+        <div class="histogramm-container-block" id="removes_chart"></div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script type="text/javascript">
+    google.charts.load('current', {'packages': ['corechart']});
+    google.charts.setOnLoadCallback(drawCharts);
+
+    function drawCharts() {
+        drawReleasesChart();
+        drawUpdatesChart();
+        drawRemovesChart();
+    }
+
+    function drawReleasesChart() {
+        let devReleasesData = false;
+        {{#if devReleasesData}}
+            devReleasesData = {{{devReleasesData}}};
+        {{/if}}
+
+        if (devReleasesData) {
+            let data = google.visualization.arrayToDataTable(devReleasesData);
+
+            let options = {
+                title: 'Dev Releases',
+                legend: {position: 'bottom'},
+                colors: ['#106AE5'],
+                vAxis: {
+                    gridlines: {count: -1}
+                },
+                hAxis: {gridlines: {count: 20}}
+            };
+
+            let chart = new google.visualization.AreaChart(document.getElementById('releases_chart'));
+
+            chart.draw(data, options);
+        }
+    }
+
+    function drawUpdatesChart() {
+        let devUpdatesData = false;
+        {{#if devUpdatesData}}
+            devUpdatesData = {{{devUpdatesData}}};
+        {{/if}}
+
+        if (devUpdatesData) {
+            let data = google.visualization.arrayToDataTable(devUpdatesData);
+
+            let options = {
+                title: 'Dev Updates',
+                legend: {position: 'bottom'},
+                colors: ['#E51056'],
+                vAxis: {
+                    gridlines: {count: -1}
+                },
+                hAxis: {gridlines: {count: 20}}
+            };
+
+            let chart = new google.visualization.AreaChart(document.getElementById('updates_chart'));
+
+            chart.draw(data, options);
+        }
+    }
+
+    function drawRemovesChart() {
+        let devRemovesData = false;
+        {{#if devRemovesData}}
+            devRemovesData = {{{devRemovesData}}};
+        {{/if}}
+
+        if (devRemovesData) {
+            let data = google.visualization.arrayToDataTable(devRemovesData);
+
+            let options = {
+                title: 'Dev Removes',
+                legend: {position: 'bottom'},
+                colors: ['#eea236'],
+                vAxis: {
+                    gridlines: {count: -1}
+                },
+                hAxis: {gridlines: {count: 20}}
+            };
+
+            let chart = new google.visualization.AreaChart(document.getElementById('removes_chart'));
+
+            chart.draw(data, options);
+        }
+    }
+</script>
+
+<script src="/js/scripts/dev.js"></script>

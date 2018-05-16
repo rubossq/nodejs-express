@@ -1,0 +1,63 @@
+{{> header}}
+
+<div class="flex-container content-block">
+    <div class="flex-container right-side-header">
+        <div>
+            <a href="{{routePath}}/ranking">
+                <li class="btn  btn-danger btn-lg">Ranking</li>
+            </a>
+        </div>
+        <form class="search" action="{{routePath}}" method="get" id="search">
+            <input type="text" placeholder="Search ID" name="name" value="{{name}}" minlength="1" maxlength="50" autocomplete="on">
+            <button type="submit" form="search"></button>
+        </form>
+    </div>
+    <div class="flex-container block-link"></div>
+    <div class="flex-container block-link">
+        <table>
+            <tr>
+                <th class="description"></th>
+                <th class="description">NAME</th>
+                <th class="description">DOWNLOADS</th>
+                <th class="description">RATING</th>
+                <!--<th class="description">RECENT</th>-->
+                <th class="description">LAST UPDATE</th>
+            </tr>
+            <tr class="block-link"></tr>
+            {{#each apps}}
+                <tr onClick="window.open('{{../routePath}}/{{this.id}}', '_blank');" class="trlink compaings-content">
+                    <td class="compa"><img src="{{this.icon}}" alt="cross"></td>
+                    <td>{{this.name}}</td>
+                    <td>{{this.downloads}}</td>
+                    <td>{{this.rating.av}}</td>
+                    <td>{{this.updates}}</td>
+                </tr>
+                <tr class="block-link2"></tr>
+            {{/each}}
+        </table>
+    </div>
+    <div class="flex-container block-link"></div>
+    <div class="flex-container block-link">
+        <div class="flex-container content-row-left"></div>
+        <div class="flex-container content-row-right">
+            <form action="{{routePath}}" method="get">
+                <input type="hidden" name="prev" value="1">
+                {{#if name}}
+                    <input type="hidden" name="name" value="{{name}}">
+                {{/if}}
+                <input type="hidden" name="skip" value="{{skip}}">
+                <button type="submit" class="btn btn-primary btn-lg direction-btn active"><a
+                        href="{{routePath}}"><span>Prev</span></a></button>
+            </form>
+            <form action="{{routePath}}" method="get">
+                <input type="hidden" name="next" value="1">
+                {{#if name}}
+                    <input type="hidden" name="name" value="{{name}}">
+                {{/if}}
+                <input type="hidden" name="skip" value="{{skip}}">
+                <button type="submit" class="btn btn-primary btn-lg"><a href="{{routePath}}"><span>Next</span></a>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
